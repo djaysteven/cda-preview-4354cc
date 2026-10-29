@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Café des Amis v5 — motion layer on top of the v4 stylesheet.
+   Safari 26 Liquid Glass (Playa r14/r15): no fixed/sticky element touching the
+   top edge carries its own background — glass and fills live on ::before,
+   the WebGL stage is a transparent fixed box with absolute children,
+   -webkit-backdrop-filter is always written first.
+   ========================================================================== */
+:root{--glass-solid:rgba(16,14,12,.94);--wash:#0c0b0a}
+:root[data-theme="light"]{--glass-solid:rgba(246,242,234,.96)}
+
+/* ---------- r14: top bar + drawer fills on pseudo-elements ---------- */
+.bar,.bar.is-solid{background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom-color:transparent}
+.bar::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--glass);border-bottom:1px solid var(--glass-b);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);opacity:0;transition:opacity .4s}
+.bar.is-solid::before,.bar.is-open::before{opacity:1}
+.drawer{background:none}
+.drawer::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--bg)}
+/* r15: blur gate (weak device / stutter) and no-support fallback */
+.no-blur .bar::before,.no-blur .glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--glass-solid)}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.bar::before,.glass{background:var(--glass-solid)}}
+
+/* ---------- stage: fixed, transparent, absolute children ---------- */
+.stage{position:fixed;inset:0;z-index:0;pointer-events:none;background:none;overflow:hidden}
+.stage__wash{position:absolute;inset:0;background:var(--wash);transition:background-color 1.2s var(--ease)}
+.stage__glow{position:absolute;left:0;top:0;width:100px;height:100px;transform-origin:0 0;border-radius:50%;opacity:0;will-change:transform,opacity;
+  background:radial-gradient(closest-side,rgba(255,156,72,.30),rgba(196,56,61,.11) 48%,rgba(196,56,61,0) 100%)}
+.stage__gl{position:absolute;inset:0;width:100%;height:100%;opacity:0;display:none}
+.m-gl .stage__gl{display:block}
+:root:not(.m-gl) .stage__glow{display:none}
+main,.foot{position:relative;z-index:1}
+.dock{z-index:40}
+
+/* section blends: sections go transparent, the wash behind them changes colour */
+.plates-live .courses,.plates-live .rooms,.plates-live .reserve,.plates-live .house,.plates-live .book,.plates-live .gin,.plates-live .occ,.plates-live .well,.plates-live .visit,.plates-live .hero{background:transparent}
+.plates-live .book__tabs{background:none;isolation:isolate}
+.plates-live .book__tabs::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--wash);transition:background-color 1.2s var(--ease)}
+.stage[data-sec="top"]{--wash:#0c0b0a}
+.stage[data-sec="house"]{--wash:#0e0c0a}
+.stage[data-sec="courses"],.stage[data-sec="m1"],.stage[data-sec="m2"]{--wash:#110d0b}
+.stage[data-sec="wellington"],.stage[data-sec="well"]{--wash:#170e0b}
+.stage[data-sec="menu"]{--wash:#0c0b0a}
+.stage[data-sec="rooms"]{--wash:#0f0d0c}
+.stage[data-sec="gin"]{--wash:#130d08}
+.stage[data-sec="occasions"]{--wash:#100c0c}
+.stage[data-sec="reserve"]{--wash:#150f0d}
+.stage[data-sec="visit"]{--wash:#0c0b0a}
+:root[data-theme="light"] .stage{--wash:#f4efe6}
+:root[data-theme="light"] .stage[data-sec="courses"]{--wash:#efe6da}
+:root[data-theme="light"] .stage[data-sec="wellington"],:root[data-theme="light"] .stage[data-sec="well"]{--wash:#f1e2d4}
+:root[data-theme="light"] .stage[data-sec="rooms"]{--wash:#ece5d9}
+:root[data-theme="light"] .stage[data-sec="gin"]{--wash:#f2e6d2}
+:root[data-theme="light"] .stage[data-sec="reserve"]{--wash:#efe5d8}
+:root[data-theme="light"] .stage__glow{background:radial-gradient(closest-side,rgba(232,140,60,.22),rgba(196,56,61,.06) 50%,rgba(196,56,61,0) 100%)}
+
+/* gentle photo parallax */
+.plates-live [data-par]:not(.frame--hero) img{transform:translate3d(0,var(--py,0px),0) scale(1.13);will-change:transform}
+
+/* ---------- Wellington slots ---------- */
+.wslot{position:relative}
+.wcap{display:none}
+.wslot--house,.wslot--courses,.wslot--well,.wslot--reserve{display:none}
+.m-gl .wslot--house,.m-gl .wslot--courses,.m-gl .wslot--well,.m-gl .wslot--reserve{display:block}
+.m-gl.gl-ready .wcap{display:flex;gap:12px;align-items:center;position:absolute;left:0;bottom:0;margin:0;font:400 .72rem/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);animation:wcap 1.2s var(--ease) both}
+.m-gl.gl-ready .wcap::before{content:"";width:22px;height:1px;background:var(--acc);flex:none}
+:lang(th) .wcap{letter-spacing:.03em!important;font-size:.84rem!important;text-transform:none!important}
+@keyframes wcap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* hero: the 3D fillet replaces the photo once the scene is ready (photo stays as fallback) */
+.m-gl .frame--hero{background:transparent;overflow:visible}
+.m-gl .frame--hero img{transition:opacity 1.2s var(--ease)}
+.m-gl.gl-ready .frame--hero img{opacity:0!important;visibility:hidden;transition:opacity 1.2s var(--ease),visibility 0s 1.2s}
+.m-gl .frame--hero .wcap{left:4px;bottom:6px}
+.wslot--house{flex:1;min-height:min(56svh,520px);margin-top:24px}
+.wslot--courses{min-height:min(52svh,520px)}
+.wslot--well{height:min(44svh,440px);margin-top:16px}
+.wslot--reserve{height:min(34svh,320px);margin-top:28px}
+@media (min-width:1024px){
+  .m-gl .house__grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,110px)}
+  .house__aside{display:flex;flex-direction:column}
+  .m-gl .house__grid .label{position:static}
+  .wslot--well{height:min(48svh,480px)}
+}
+@media (max-width:1023px){
+  .wslot--house{min-height:min(40svh,380px);margin-top:8px}
+  .wslot--courses{min-height:min(40svh,380px);order:2}
+  .wslot--well{height:min(36svh,340px)}
+  .wslot--reserve{height:min(30svh,280px)}
+}
+
+/* ---------- courses intro ---------- */
+.courses{padding-bottom:0}
+.courses__intro{display:grid;gap:clamp(28px,4vw,72px);align-items:center;padding-bottom:clamp(40px,6vw,96px)}
+.courses__main{min-width:0}
+.courses__main .lede{margin-top:20px;max-width:56ch}
+.courses__jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.courses__jump a{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border:1px solid var(--line2);border-radius:999px;text-decoration:none;font:400 .8rem/1.25 var(--sans);letter-spacing:.06em;color:var(--ink2);transition:border-color .3s,color .3s}
+.courses__jump a:hover{border-color:var(--acc);color:var(--ink)}
+.courses__hint{margin-top:22px;font-size:.84rem;color:var(--mute);display:flex;gap:12px;align-items:center}
+.courses__hint::before{content:"";width:1px;height:28px;background:linear-gradient(var(--acc),transparent);flex:none}
+:root:not(.plates-live) .courses__hint{display:none}
+@media (min-width:1024px){.m-gl .courses__intro{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+@media (max-width:1023px){.courses__intro{grid-template-columns:1fr}}
+
+/* ---------- plates: static list (reduced motion / no JS) ---------- */
+.plates{position:relative}
+.plates__pin{padding:clamp(40px,6vw,80px) var(--pad);max-width:var(--max);margin:0 auto}
+.plates__k{display:flex;align-items:center;gap:12px;font:400 .72rem/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.plates__k .num{font-family:var(--serif);font-size:1rem;color:var(--acc2);letter-spacing:0}
+:lang(th) .plates__k{letter-spacing:.03em;font-size:.86rem}
+.plates__head h3{font:400 clamp(1.5rem,1rem + 2vw,2.6rem)/1.2 var(--serif);color:var(--ink);margin:10px 0 14px;text-wrap:balance}
+.plates__head .cm__meta{font-size:.86rem;padding-bottom:0;border-bottom:0;gap:4px 18px}
+.plates__disc,.plates__ticks{display:none}
+.plates__caps{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--line2)}
+.cap{display:grid;grid-template-columns:72px 1fr;gap:4px 18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.cap>*:not(.cap__img){grid-column:2}
+.cap__img{grid-row:1/span 6;width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #0e0c0b,0 0 0 4px rgba(196,56,61,.7)}
+.cap__n{font:400 .72rem/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.cap__n b{font-weight:400;color:var(--acc2)}
+.cap h4{font:400 clamp(1.12rem,1rem + .55vw,1.5rem)/1.3 var(--serif);color:var(--ink);text-wrap:balance}
+.cap__d{color:var(--mute);font-size:.94rem}
+.cap .pair{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;margin-top:6px;color:var(--ink2);font:400 1rem/1.4 var(--serif)}
+.cap .pair span{font:400 .68rem/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--acc2)}
+:lang(th) .cap .pair span,:lang(th) .cap__n{letter-spacing:.03em;font-size:.82rem}
+.cap .opt{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2)}
+.cap__ph{font-size:.72rem;color:var(--mute);opacity:.8;font-style:italic}
+
+/* ---------- plates: live (scroll-driven) ---------- */
+.plates-live .plates{height:calc(100svh + (var(--n,6) - 1) * 85svh)}
+.plates-live .plates__pin{position:sticky;top:0;height:100svh;max-width:none;margin:0;overflow:hidden;isolation:isolate;background:none;
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-rows:auto 1fr auto;column-gap:clamp(32px,6vw,110px);
+  padding:calc(var(--bar) + env(safe-area-inset-top) + clamp(16px,3svh,40px)) max(var(--pad),calc((100% - var(--max)) / 2 + var(--pad))) clamp(20px,4svh,44px)}
+.plates-live .plates__pin::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 70% at 72% 54%,rgba(196,56,61,.10),rgba(196,56,61,0) 70%),var(--bg)}
+.plates-live #m2 .plates__pin::before{background:radial-gradient(60% 70% at 72% 54%,rgba(214,150,80,.09),rgba(214,150,80,0) 70%),var(--bg)}
+.plates-live .plates__head{grid-column:1;grid-row:1;border-top:1px solid var(--line2);padding-top:18px}
+.plates-live .plates__caps{grid-column:1;grid-row:2;align-self:center;display:grid;margin:0;border:0}
+.plates-live .cap{grid-area:1/1;display:block;padding:0;border:0;opacity:0;visibility:hidden;will-change:opacity,transform}
+.plates-live .cap.is-on{opacity:1;visibility:visible}
+.plates-live .cap__img{display:none}
+.plates-live .cap__n{font:400 clamp(.72rem,.6rem + .3vw,.86rem)/1 var(--sans);letter-spacing:.2em;margin-bottom:clamp(10px,2svh,20px)}
+.plates-live .cap__n b{font:400 clamp(2.6rem,1.6rem + 3.4vw,5rem)/1 var(--serif);letter-spacing:0;margin-right:.18em;vertical-align:-.12em}
+.plates-live .cap h4{font-size:clamp(1.35rem,.9rem + 1.9vw,2.5rem);line-height:1.22;max-width:20ch}
+.plates-live .cap__d{margin-top:12px;max-width:44ch}
+.plates-live .cap .pair{margin-top:clamp(14px,2.4svh,26px);padding-top:14px;border-top:1px solid var(--line);max-width:36ch;flex-direction:column;gap:6px;font-size:clamp(1rem,.9rem + .35vw,1.2rem)}
+.plates-live .cap .opt{margin-top:12px}
+.plates-live .cap__ph{margin-top:12px}
+.plates-live .plates__ticks{grid-column:1;grid-row:3;display:flex;gap:6px;list-style:none;padding:0;margin:0;position:relative}
+.plates__ticks li{flex:1;height:30px;display:flex;align-items:flex-end;position:relative;font:400 .66rem/1 var(--sans);letter-spacing:.14em;color:var(--mute)}
+.plates__ticks li::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line2);transition:background-color .4s,height .4s var(--ease)}
+.plates__ticks li span{padding-bottom:9px;transition:color .4s}
+.plates__ticks li.is-past::after{background:rgba(196,56,61,.5)}
+.plates__ticks li.is-on::after{background:var(--acc);height:2px}
+.plates__ticks li.is-on span{color:var(--ink)}
+.plates-live .plates__disc{display:block;grid-column:2;grid-row:1/4;place-self:center;position:relative;
+  --ds:min(46vw,calc(100svh - var(--bar) - 110px),680px);width:var(--ds);height:var(--ds)}
+.plates__gl{position:absolute;left:-12%;top:-12%;width:124%;height:124%;display:block}
+.plates__css{display:none}
+/* CSS fallback plate (no WebGL) */
+.plates.is-css .plates__gl{display:none}
+.plates.is-css .plates__disc{border-radius:50%;
+  background:radial-gradient(circle closest-side,rgba(0,0,0,0) 0 83.2%,#0d0b0a 83.6% 85.6%,#9e3036 85.9% 87.2%,#151210 87.5% 99.2%,rgba(0,0,0,0) 100%),
+             conic-gradient(from calc(-40deg + var(--turn,0deg)),rgba(255,226,190,.16),rgba(255,226,190,0) 18%,rgba(255,226,190,0) 82%,rgba(255,226,190,.16));
+  box-shadow:0 calc(var(--ds) * .06) calc(var(--ds) * .12) rgba(0,0,0,.55),0 0 calc(var(--ds) * .1) rgba(255,150,70,calc(var(--glow,0) * .35))}
+.plates.is-css .plates__css{display:block;position:absolute;inset:8.4%;border-radius:50%;overflow:hidden;background:#0b0a09;transform:translateZ(0)}
+.plates.is-css .plates__css img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:transform,clip-path}
+.plates.is-css .plates__css img.is-cur{opacity:1}
+.plates.is-css .plates__css::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 calc(var(--ds) * .09) rgba(0,0,0,.7);z-index:3}
+
+/* portrait / narrow: plate on top, caption under it */
+@media (max-aspect-ratio:1/1),(max-width:699px){
+  .plates-live .plates__pin{grid-template-columns:1fr;grid-template-rows:auto auto 1fr auto;row-gap:clamp(10px,2svh,24px);
+    padding-top:calc(var(--bar) + env(safe-area-inset-top) + 10px);padding-bottom:calc(var(--dock) + 14px + env(safe-area-inset-bottom))}
+  .plates-live .plates__head{grid-row:1;padding-top:12px;display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:baseline}
+  .plates-live .plates__head h3{margin:0;font-size:clamp(1.1rem,.8rem + 1.6vw,1.8rem)}
+  .plates-live .plates__head .cm__meta{grid-column:1/-1;font-size:.76rem;margin-top:6px;gap:2px 12px}
+  .plates-live .plates__head .cm__meta span:nth-child(n+3){display:none}
+  .plates-live .plates__disc{grid-column:1;grid-row:2;--ds:min(80vw,46svh,600px)}
+  .plates-live .plates__caps{grid-row:3;align-self:start}
+  .plates-live .plates__ticks{grid-row:4}
+  .plates-live .cap__n{margin-bottom:8px}
+  .plates-live .cap__n b{font-size:clamp(1.8rem,1.2rem + 3vw,3.4rem)}
+  .plates-live .cap h4{font-size:clamp(1.15rem,.85rem + 1.7vw,2rem);max-width:none}
+  .plates-live .cap__d{font-size:.86rem;margin-top:6px}
+  .plates-live .cap .pair{margin-top:10px;padding-top:10px;font-size:.98rem;max-width:none}
+  .plates-live .cap .opt,.plates-live .cap__ph{margin-top:6px}
+}
+@media (max-aspect-ratio:1/1) and (max-height:700px){
+  .plates-live .plates__disc{--ds:min(78vw,40svh)}
+  .plates-live .cap__d{display:none}
+}
+/* short landscape (phones on their side) */
+@media (min-aspect-ratio:1/1) and (max-height:560px){
+  .plates-live .plates__pin{padding-top:calc(var(--bar) + 8px);padding-bottom:12px;column-gap:28px}
+  .plates-live .plates__disc{--ds:min(44vw,calc(100svh - var(--bar) - 36px))}
+  .plates-live .plates__head{padding-top:8px}
+  .plates-live .plates__head h3{font-size:1.1rem;margin:4px 0}
+  .plates-live .plates__head .cm__meta{display:none}
+  .plates-live .cap__n{margin-bottom:6px}
+  .plates-live .cap__n b{font-size:2rem}
+  .plates-live .cap h4{font-size:1.2rem}
+  .plates-live .cap__d{display:none}
+  .plates-live .cap .pair{margin-top:8px;padding-top:8px;font-size:.95rem}
+  .plates-live .cap__ph{display:none}
+  .plates__ticks li{height:22px}
+}
+
+/* ---------- reduced motion: everything static, photo hero, list menus ---------- */
+.m-rm .stage__gl,.m-rm .stage__glow{display:none}
+@media (prefers-reduced-motion:reduce){
+  .stage__wash{transition:none}
+}
+
+/* ================= v6 ================= */
+/* Lenis owns the glide on fine pointers; native smooth anchor scrolling would fight it */
+html.lenis,html.lenis-on{scroll-behavior:auto}
+.m-gl.gl-ready .stage__gl{opacity:1;transition:opacity 1.4s ease}
+html.lenis.lenis-stopped{overflow:hidden}
+/* the scene draws its own candle halo now */
+.m-gl .stage__glow{display:none}
+/* headings settle in word by word (Marco's split) — Thai splits on spaces only, so it rises phrase by phrase */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.split .w>span{display:inline-block;transform:translate3d(0,108%,0) rotate(2.5deg);transform-origin:0 100%;opacity:.0;
+  transition:transform 1.15s cubic-bezier(.2,.7,.1,1),opacity .9s ease;transition-delay:calc(var(--i) * 42ms)}
+.split.in .w>span,.m-rm .split .w>span{transform:none;opacity:1}
+html:not(.js) .split .w>span{transform:none;opacity:1}
+/* plates: the charger tilts with scroll speed (set from JS each frame) */
+.plates-live .plates__disc{will-change:transform;transform-style:preserve-3d}
+@media (prefers-reduced-motion:reduce){.split .w>span{transform:none!important;opacity:1!important;transition:none}}
+/* v6: on portrait phones with the live Wellington, the dish leads the hero (as on Marco's) instead of waiting below the fold */
+@media (max-width:899px) and (orientation:portrait){
+  .m-gl .hero{gap:6px;padding-top:calc(var(--bar) + 4px)}
+  .m-gl .hero__media{order:-1}
+  .m-gl .frame--hero{aspect-ratio:auto;height:clamp(220px,34svh,330px);max-height:none}
+}

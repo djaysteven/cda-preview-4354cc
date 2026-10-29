@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Café des Amis — Fine dining restaurant, Pattaya</title>
+<meta name="description" content="Elegant European &amp; French cuisine in Pratumnak, Pattaya. Garden Courtyard, Beef Wellington, around 200 gins and one of the best wine cellars in Pattaya.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0c0b0a">
+<script>
+/* no-FOUC: theme + language resolved before first paint */
+(function(){try{var d=document.documentElement,t=localStorage.getItem('cda6-theme');d.setAttribute('data-theme',t==='light'?'light':'dark');
+var l=localStorage.getItem('cda6-lang');if(!l){l=((navigator.languages&&navigator.languages[0])||navigator.language||'en').toLowerCase().indexOf('th')===0?'th':'en'}
+d.lang=l;if(l==='th')d.classList.add('i18n-wait');}catch(e){}})();
+</script>
+<link rel="icon" href="brand/favicon.webp" type="image/webp">
+<link rel="preload" href="fonts/ShipporiMincho-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/InterTight-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="v5.css">
+</head>
+<body>
+<div class="stage" id="stage" aria-hidden="true">
+  <div class="stage__wash" id="wash"></div>
+  <div class="stage__glow" id="wglow"></div>
+  <canvas class="stage__gl" id="wgl"></canvas>
+</div>
+<a class="skip" href="#main" data-i="skip">Skip to content</a>
+
+<header class="bar" id="bar">
+  <a class="bar__brand" href="#top" aria-label="Café des Amis — home"><span class="mark" aria-hidden="true"></span></a>
+  <nav class="bar__nav" aria-label="Primary">
+    <a href="#courses" data-i="nav.courses">Tasting</a>
+    <a href="#menu" data-i="nav.menu">Menu</a>
+    <a href="#rooms" data-i="nav.rooms">Garden &amp; Room</a>
+    <a href="#gin" data-i="nav.gin">Gin &amp; Wine</a>
+    <a href="#occasions" data-i="nav.occ">Occasions</a>
+    <a href="#visit" data-i="nav.visit">Visit</a>
+  </nav>
+  <div class="bar__tools">
+    <button class="tool" id="langBtn" type="button" aria-label="Switch language"><span class="tool__txt" id="langTxt">ไทย</span></button>
+    <button class="tool" id="themeBtn" type="button" aria-label="Switch to light theme">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.6A8 8 0 0 1 9.4 4.5a8 8 0 1 0 10.1 10.1z"/></svg>
+    </button>
+    <a class="btn btn--line bar__cta" href="#reserve" data-i="cta.reserve">Reserve</a>
+    <button class="tool bar__menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true" inert>
+  <nav class="drawer__nav" aria-label="Mobile">
+    <a href="#courses"><em>01</em><span data-i="nav.courses">Tasting</span></a>
+    <a href="#menu"><em>02</em><span data-i="nav.menu">Menu</span></a>
+    <a href="#rooms"><em>03</em><span data-i="nav.rooms">Garden &amp; Room</span></a>
+    <a href="#gin"><em>04</em><span data-i="nav.gin">Gin &amp; Wine</span></a>
+    <a href="#occasions"><em>05</em><span data-i="nav.occ">Occasions</span></a>
+    <a href="#visit"><em>06</em><span data-i="nav.visit">Visit</span></a>
+    <a href="#reserve"><em>07</em><span data-i="cta.reserve">Reserve</span></a>
+  </nav>
+  <p class="drawer__foot"><a href="tel:+66840264989">+66 (0)84 026 4989</a> · <a href="https://line.me/R/ti/p/@cafedesamis" rel="noopener" target="_blank">LINE @cafedesamis</a></p>
+</div>
+
+<main id="main">
+
+<!-- 1 · HERO : asymmetric, wordmark-led -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="hero__text">
+    <p class="kicker"><span class="dot" aria-hidden="true"></span><span data-i="hero.kicker">Fine dining restaurant, Pattaya</span></p>
+    <h1 id="heroTitle" class="hero__title"><span class="sr-only">Café des Amis</span><span class="mark mark--xl" aria-hidden="true"></span></h1>
+    <p class="hero__lede" data-i="hero.lede">Elegant European &amp; French cuisine, served by candlelight in a garden courtyard at the end of Soi 11.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--solid" href="#reserve" data-i="cta.table">Reserve a table</a>
+      <a class="btn btn--ghost" href="#menu" data-i="cta.menu">Read the menu</a>
+    </div>
+    <dl class="hero__facts">
+      <div><dt data-i="f.hours.t">Open 7 days</dt><dd>17:00 – 23:00</dd></div>
+      <div><dt data-i="f.early.t">Early bird</dt><dd data-i="f.early.d">−10% when ordered by 17:30</dd></div>
+      <div><dt data-i="f.award.t">Travellers’ Choice</dt><dd data-i="f.award.d">Every year since 2014</dd></div>
+    </dl>
+  </div>
+  <figure class="hero__media">
+    <div class="frame frame--hero wslot" data-ws="beef" data-par><img src="img/hero-1200.webp" srcset="img/hero-480.webp 480w, img/hero-800.webp 800w, img/hero-1200.webp 1200w" sizes="(min-width: 900px) 44vw, 92vw" width="1200" height="1600" alt="Beef fillet with red wine demi-glace, plated at Café des Amis" data-ialt="hero" fetchpriority="high" decoding="async"><p class="wcap" data-i="ws.1">01 — Beef Wellington, by candlelight</p></div>
+    <p class="vert" aria-hidden="true">Pratumnak · Thap Phraya · Soi 11</p>
+  </figure>
+</section>
+
+<!-- 2 · HOUSE : the quiet statement -->
+<section class="house" id="house" aria-labelledby="houseT">
+  <div class="wrap house__grid">
+    <div class="house__aside">
+      <p class="label reveal"><span class="num">I</span><span data-i="house.label">The house</span></p>
+      <div class="wslot wslot--house" data-ws="dux" aria-hidden="true"><p class="wcap" data-i="ws.2">02 — Fillet, mushroom duxelles &amp; prosciutto</p></div>
+    </div>
+    <div class="house__body">
+      <h2 id="houseT" class="display reveal" data-i="house.title">We have the best quality Alaskan King Crab, Kobe beef, Russian Caviar, fresh Truffles, oysters, lobster, meat and fish.</h2>
+      <ul class="ledger reveal">
+        <li><span data-i="house.l1">Elegant European &amp; French cuisine</span></li>
+        <li><span data-i="house.l2">A large range of world-class beef and lamb, fish, lobster, caviar and oysters</span></li>
+        <li><span data-i="house.l3">One of the best wine cellars in Pattaya</span></li>
+        <li><span data-i="house.l4">The largest gin bar in Thailand — over 200 gins</span></li>
+        <li><span data-i="house.l5">The best-stocked bar in Pattaya, with 300 labels</span></li>
+      </ul>
+      <div class="notes reveal">
+        <p><strong data-i="house.early.t">Early bird.</strong> <span data-i="house.early.d">Please be seated in the restaurant and place your food order by 17:30 to receive a 10% discount on your entire bill. Does not include special events, special dinners and some special dates unless stated on those menus.</span></p>
+        <p><strong data-i="house.amex.t">American Express.</strong> <span data-i="house.amex.d">We are pleased to welcome American Express card holders at Café des Amis.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · COURSES : plate-to-plate, course by course -->
+<section class="courses" id="courses" aria-labelledby="coursesT">
+  <div class="wrap courses__intro">
+    <div class="wslot wslot--courses" data-ws="pastry" aria-hidden="true"><p class="wcap" data-i="ws.3">03 — Lattice puff pastry, egg-washed and baked</p></div>
+    <div class="courses__main">
+      <p class="label reveal"><span class="num">II</span><span data-i="courses.label">In courses</span></p>
+      <h2 id="coursesT" class="display reveal" data-i="courses.title">Six courses, each with its glass.</h2>
+      <p class="lede reveal" data-i="courses.lede">New chef’s tasting menus featuring Russian Caviar, Alaskan King Crab and Kobe beef — served course by course, paired with wine from our cellar.</p>
+      <p class="courses__jump reveal"><a href="#m1" data-i="courses.m1">#1 Chef’s Gourmet Tasting Menu</a><a href="#m2" data-i="courses.m2">#2 Chef’s Seafood Tasting Menu</a></p>
+      <p class="courses__hint reveal" data-i="courses.hint">Keep scrolling — each course arrives on its plate, with its wine.</p>
+    </div>
+  </div>
+  <section class="plates" id="m1" aria-labelledby="m1T" data-menu="m1"></section>
+  <section class="plates" id="m2" aria-labelledby="m2T" data-menu="m2"></section>
+</section>
+
+<!-- 4 · WELLINGTON : panorama reveal + spec sheet -->
+<section class="well" id="wellington" aria-labelledby="wellT">
+  <div class="well__pano" id="wellPano" data-ws="baked" data-ws-at=".wslot--well"><img src="img/well-1200.webp" srcset="img/well-480.webp 480w, img/well-800.webp 800w, img/well-1200.webp 1200w, img/well-1600.webp 1600w, img/well-2400.webp 2400w, img/well-2880.webp 2880w" sizes="100vw" width="2880" height="1440" alt="Beef Wellington, sliced at the table" data-ialt="well" loading="lazy" decoding="async"></div>
+  <div class="wrap well__grid">
+    <div>
+      <p class="label reveal"><span class="num">III</span><span data-i="well.label">Signature</span></p>
+      <h2 id="wellT" class="display reveal" data-i="well.title">Jack’s Creek Beef Wellington</h2>
+      <div class="wslot wslot--well" data-ws="slice" aria-hidden="true"><p class="wcap" data-i="ws.4">04 — Cut at the table, medium rare</p></div>
+    </div>
+    <div class="well__body">
+      <p class="reveal" data-i="well.p1">Indulge in the absolute perfection of our meticulously prepared Beef Wellington, crafted with exquisite care and cooked to flawless perfection. The full-size Wellington is presented cut and served at the table.</p>
+      <p class="reveal" data-i="well.p2">Our “Long” Kimbara Beef Wellington is available for 3 persons or more, at 1,590 baht per person. Please pre-book — a deposit will be required.</p>
+      <table class="spec reveal">
+        <caption data-i="well.cap">Single Wellington, per person — beef fillet baked in puff pastry, with Gratin Dauphinois and red wine rosemary demi-glace. Medium rare or medium.</caption>
+        <tbody>
+          <tr><th scope="row" data-i="well.b1">Black Angus Beef Fillet MB3</th><td>1,590</td></tr>
+          <tr><th scope="row" data-i="well.b2">NZ Hawkes Bay Wagyu Fillet</th><td>1,950</td></tr>
+          <tr><th scope="row" data-i="well.b3">AUS Okan Wagyu MB9</th><td>2,490</td></tr>
+        </tbody>
+      </table>
+      <p class="fine reveal" data-i="well.mb">“MB” is the level of marbling — a higher number means more flavour. Each Wellington is for one person; you can pre-order a large one to share at your table.</p>
+      <a class="btn btn--line reveal" href="#reserve" data-i="well.cta">Pre-book a Wellington</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · THE MENU BOOK : in-page, real prices -->
+<section class="book" id="menu" aria-labelledby="menuT" data-ws="float">
+  <div class="wrap">
+    <div class="book__head">
+      <p class="label reveal"><span class="num">IV</span><span data-i="menu.label">The menu</span></p>
+      <h2 id="menuT" class="display reveal" data-i="menu.title">Fine dining, French and European cuisine.</h2>
+      <p class="lede reveal" data-i="menu.lede">Try our French &amp; Irish oysters, Sicilian red prawns cured with lemon, salt and olive oil, and Lobster Thermidor. Ask our staff about the Extra Large Alaskan King Crab legs today.</p>
+    </div>
+    <div class="book__tabs" role="tablist" aria-label="Menus" id="bookTabs">
+      <button role="tab" aria-selected="true" aria-controls="p-carte" id="t-carte" data-i="menu.t.carte">À la carte</button>
+      <button role="tab" aria-selected="false" aria-controls="p-veg" id="t-veg" tabindex="-1" data-i="menu.t.veg">Vegetarian</button>
+      <button role="tab" aria-selected="false" aria-controls="p-kids" id="t-kids" tabindex="-1" data-i="menu.t.kids">Children</button>
+      <button role="tab" aria-selected="false" aria-controls="p-glass" id="t-glass" tabindex="-1" data-i="menu.t.glass">Wine by the glass</button>
+      <button role="tab" aria-selected="false" aria-controls="p-bottle" id="t-bottle" tabindex="-1" data-i="menu.t.bottle">Champagne &amp; cellar</button>
+    </div>
+    <div class="book__panel" id="p-carte" role="tabpanel" aria-labelledby="t-carte"></div>
+    <div class="book__panel" id="p-veg" role="tabpanel" aria-labelledby="t-veg" hidden></div>
+    <div class="book__panel" id="p-kids" role="tabpanel" aria-labelledby="t-kids" hidden></div>
+    <div class="book__panel" id="p-glass" role="tabpanel" aria-labelledby="t-glass" hidden></div>
+    <div class="book__panel" id="p-bottle" role="tabpanel" aria-labelledby="t-bottle" hidden></div>
+    <div class="book__foot">
+      <p class="fine" data-i="menu.baht">All prices in Thai baht. Freshly sliced truffles subject to stock — please ask.</p>
+      <p class="pdfs"><span data-i="menu.pdf">Printable menus (PDF):</span>
+        <a href="https://cafe-des-amis.com/wp-content/uploads/2026/09/CDA-Food-Menu-SEPT-27-2026.pdf" target="_blank" rel="noopener" data-i="pdf.food">Food menu</a>
+        <a href="https://cafe-des-amis.com/wp-content/uploads/2026/09/CDA-Sea-Food-Chef-Menu-AUGUST_2026-PDF.pdf" target="_blank" rel="noopener" data-i="pdf.sea">Seafood tasting menu</a>
+        <a href="https://cafe-des-amis.com/wp-content/uploads/2025/12/CDA-Wine-By-the-Glass-December-2025.pdf" target="_blank" rel="noopener" data-i="pdf.glass">Wine by the glass</a>
+        <a href="https://cafe-des-amis.com/wp-content/uploads/2026/09/Wine-List-September-2026.pdf" target="_blank" rel="noopener" data-i="pdf.wine">Full wine list</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · TWO ROOMS : switcher -->
+<section class="rooms" id="rooms" aria-labelledby="roomsT">
+  <div class="wrap rooms__grid">
+    <div class="rooms__text">
+      <p class="label reveal"><span class="num">V</span><span data-i="rooms.label">Two places to sit</span></p>
+      <h2 id="roomsT" class="display reveal" data-i="rooms.title">The Garden Courtyard, or inside the main restaurant.</h2>
+      <div class="seg seg--rooms reveal" role="tablist" aria-label="Seating">
+        <button role="tab" id="tab-garden" aria-controls="r-garden" aria-selected="true" data-i="rooms.g">Garden Courtyard</button>
+        <button role="tab" id="tab-inside" aria-controls="r-inside" aria-selected="false" tabindex="-1" data-i="rooms.i">Inside</button>
+      </div>
+      <div id="r-garden" role="tabpanel" aria-labelledby="tab-garden" class="rooms__copy">
+        <p data-i="rooms.g1">Our garden courtyard terrace lies in the heart of Café des Amis — a haven of romance, particularly enchanting and cosy. Don’t worry about warm evenings: we have personal air conditioners. When the heavens weep, we close the roof, ensuring an intimate and dry dinner beneath the shimmering canopy of stars.</p>
+        <ul class="ticks">
+          <li data-i="rooms.g2">Romantic and private</li>
+          <li data-i="rooms.g3">We protect you (and your ankles!) against mosquitoes with a special repellent</li>
+          <li data-i="rooms.g4">A mobile air-cooling fan unit at each table</li>
+          <li data-i="rooms.g5">The roof opens when it is not raining</li>
+        </ul>
+      </div>
+      <div id="r-inside" role="tabpanel" aria-labelledby="tab-inside" class="rooms__copy" hidden>
+        <p data-i="rooms.i1">The climate-controlled inside restaurant is a contemporary, beautifully decorated, high-class environment.</p>
+        <ul class="ticks">
+          <li data-i="rooms.i2">Climate controlled</li>
+          <li data-i="rooms.i3">Contemporary and beautifully decorated</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rooms__media">
+      <div class="frame frame--wide" data-par>
+        <div class="xfade is-on" data-room="garden"><img src="img/garden-1200.webp" srcset="img/garden-480.webp 480w, img/garden-800.webp 800w, img/garden-1200.webp 1200w, img/garden-1600.webp 1600w, img/garden-2400.webp 2400w, img/garden-2880.webp 2880w" sizes="(min-width: 1024px) 56vw, 92vw" width="2880" height="2022" alt="The Garden Courtyard at night, lamps lit over the tables" data-ialt="garden" loading="lazy" decoding="async"></div>
+        <div class="xfade" data-room="inside"><img src="img/g2-1200.webp" srcset="img/g2-480.webp 480w, img/g2-800.webp 800w, img/g2-1200.webp 1200w, img/g2-1600.webp 1600w, img/g2-1920.webp 1920w" sizes="(min-width: 1024px) 56vw, 92vw" width="1920" height="1440" alt="The inside restaurant set for a long table, red chairs and white linen" data-ialt="g2" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="frame frame--inset" data-par="-1"><img src="img/g1-1200.webp" srcset="img/g1-480.webp 480w, img/g1-800.webp 800w, img/g1-1200.webp 1200w, img/g1-1600.webp 1600w, img/g1-1920.webp 1920w" sizes="(min-width: 1024px) 22vw, 44vw" width="1920" height="1440" alt="The courtyard terrace by day, set for dinner" data-ialt="g1" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · GIN & WINE : staggered column rhythm -->
+<section class="gin" id="gin" aria-labelledby="ginT" data-ws="float">
+  <div class="wrap gin__grid">
+    <div class="gin__text">
+      <p class="label reveal"><span class="num">VI</span><span data-i="gin.label">The bar</span></p>
+      <h2 id="ginT" class="display reveal" data-i="gin.title">A vast collection of specialist gins.</h2>
+      <p class="reveal" data-i="gin.p1">A world-class collection of unique and exotic flavours from over 20 different countries — the most unusual and exceptional gins you’ll ever come across. Whether you’re an adventurous spirit or prefer something traditional, from the exquisite London Dry to the sweet, fruit-forward modern botanicals, prepare yourself for a wonderful gin journey.</p>
+      <dl class="tally reveal">
+        <div><dt>200</dt><dd data-i="gin.n1">gins, around</dd></div>
+        <div><dt>8</dt><dd data-i="gin.n2">tonics</dd></div>
+        <div><dt>20+</dt><dd data-i="gin.n3">countries</dd></div>
+        <div><dt>300</dt><dd data-i="gin.n4">labels behind the bar</dd></div>
+      </dl>
+      <p class="reveal" data-i="gin.wine">And one of the best wine cellars in Pattaya — from Crémant de Bourgogne by the glass to Opus One and Château Margaux.</p>
+      <a class="btn btn--line reveal" href="#menu" data-open="p-bottle" data-i="gin.cta">See the wine list</a>
+    </div>
+    <div class="gin__cols" aria-label="Drinks at the bar">
+      <div class="frame frame--g1" data-par="1.4"><img src="img/gin1-900.webp" srcset="img/gin1-480.webp 480w, img/gin1-800.webp 800w, img/gin1-900.webp 900w" sizes="(min-width: 1024px) 18vw, 30vw" width="900" height="1200" alt="A gin cocktail with a dried citrus garnish" data-ialt="gin1" loading="lazy" decoding="async"></div>
+      <div class="frame frame--g2" data-par="-.6"><img src="img/gin2-900.webp" srcset="img/gin2-480.webp 480w, img/gin2-800.webp 800w, img/gin2-900.webp 900w" sizes="(min-width: 1024px) 18vw, 30vw" width="900" height="1200" alt="A whisky-sour style cocktail with orange and cinnamon" data-ialt="gin2" loading="lazy" decoding="async"></div>
+      <div class="frame frame--g3" data-par="1"><img src="img/gin3-900.webp" srcset="img/gin3-480.webp 480w, img/gin3-800.webp 800w, img/gin3-900.webp 900w" sizes="(min-width: 1024px) 18vw, 30vw" width="900" height="1200" alt="An amber cocktail with a flower garnish" data-ialt="gin3" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · OCCASIONS, DRESS CODE, HOUSE NOTES -->
+<section class="occ" id="occasions" aria-labelledby="occT" data-ws="float">
+  <div class="wrap">
+    <div class="occ__head">
+      <p class="label reveal"><span class="num">VII</span><span data-i="occ.label">Occasions</span></p>
+      <h2 id="occT" class="display reveal" data-i="occ.title">Restaurants are our passion.</h2>
+    </div>
+    <div class="occ__grid">
+      <div class="occ__lead">
+        <p class="reveal" data-i="occ.p1">Let us immerse you in a world of culinary mastery, where dining becomes a form of artistry. We await the pleasure of welcoming you to an exquisite dinner, where every detail is designed to be unforgettable. Whether it’s a special anniversary or a cherished occasion, celebrate it with a sense of style.</p>
+        <p class="occlist reveal"><span data-i="occ.o1">Valentine’s</span><span data-i="occ.o2">Christmas</span><span data-i="occ.o3">Wedding anniversaries</span><span data-i="occ.o4">Birthdays</span><span data-i="occ.o5">Family dinners</span></p>
+        <p class="reveal" data-i="occ.p2">Looking for a place for a birthday, anniversary or your upcoming special event? Given time to arrange it, we prepare bouquets of flowers, birthday cakes, balloons and decorations. We specialise in turning any occasion into a beautiful memory, ensuring every guest in your party feels special and taken care of.</p>
+        <div class="frame frame--occ reveal" data-par><img src="img/dish2-900.webp" srcset="img/dish2-480.webp 480w, img/dish2-800.webp 800w, img/dish2-900.webp 900w" sizes="(min-width: 1024px) 30vw, 92vw" width="900" height="1200" alt="Caviar canapés presented beside a tin of caviar" data-ialt="dish2" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="occ__side">
+        <article class="panel glass reveal" aria-labelledby="dressT">
+          <h3 id="dressT" class="h3" data-i="dress.t">Dress code — Smart Casual</h3>
+          <p data-i="dress.p">We have smartly dressed guests celebrating special occasions such as wedding anniversaries. Please respect our dress code.</p>
+          <ul class="ticks ticks--x">
+            <li data-i="dress.1">No flip-flops or sleeveless T-shirts</li>
+            <li data-i="dress.2">No beachwear</li>
+            <li data-i="dress.3">Shorts and polo are fine if you look smart, with nice shoes, sandals or loafers</li>
+          </ul>
+        </article>
+        <article class="panel reveal" aria-labelledby="notesT">
+          <h3 id="notesT" class="h3" data-i="notes.t">At your table</h3>
+          <ol class="numlist">
+            <li data-i="notes.1">Reading glasses are available.</li>
+            <li data-i="notes.2">Phone chargers at your table, fast chargers at the bar, and Wi-Fi for guests.</li>
+            <li data-i="notes.3">If the air conditioning is blowing on you, or is too warm or cold, please tell a member of staff.</li>
+            <li data-i="notes.4">Freshly laundered shawls are available for ladies if you are cold.</li>
+            <li data-i="notes.5">We keep Paracetamol, Nurofen and Gaviscon — ask our staff if you need them.</li>
+            <li data-i="notes.6">We use no fake flowers: every flower you see here is fresh.</li>
+            <li data-i="notes.7">Please refrain from video calls, speaker calls or watching videos that would disturb other diners.</li>
+            <li data-i="notes.8">If anything is incorrect or disappoints you, please tell us immediately — we will act swiftly to make the rest of your evening first class.</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+    <div class="accolade reveal">
+      <p class="accolade__big" data-i="acc.big">Tripadvisor Travellers’ Choice since 2014, for nine consecutive years.</p>
+      <p data-i="acc.small">Previously ranked number five for Tripadvisor Best Restaurant in Thailand, and ranked in the top 25 best restaurants in Asia for several years.</p>
+      <p class="accolade__links"><a href="https://www.tripadvisor.com/TravelersChoice-Restaurants-cFineDining-g2#17" target="_blank" rel="noopener" data-i="acc.ta">Tripadvisor Travellers’ Choice</a><a href="https://youtu.be/9IFm5BFrPeI?si=UOHMs5SDyVe1bUc5" target="_blank" rel="noopener" data-i="acc.yt">Watch the YouTube review</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · RESERVE : real channels + placeholder form -->
+<section class="reserve" id="reserve" aria-labelledby="resT">
+  <div class="wrap reserve__grid">
+    <div class="reserve__info">
+      <p class="label reveal"><span class="num">VIII</span><span data-i="res.label">Table reservation</span></p>
+      <h2 id="resT" class="display reveal" data-i="res.title">Three ways to reserve, or start a chat.</h2>
+      <ul class="channels reveal">
+        <li><a href="tel:+66840264989"><span class="ch__k" data-i="res.en">English</span><span class="ch__v">+66 (0)84 026 4989</span></a></li>
+        <li><a href="tel:+66860468774"><span class="ch__k" data-i="res.th">ภาษาไทย</span><span class="ch__v">+66 (0)86 046 8774</span></a></li>
+        <li><a href="tel:+66800094348"><span class="ch__k" data-i="res.also">Also</span><span class="ch__v">+66 (0)80 009 4348</span></a></li>
+        <li><a href="https://line.me/R/ti/p/@cafedesamis" target="_blank" rel="noopener"><span class="ch__k">LINE</span><span class="ch__v">@cafedesamis</span></a></li>
+        <li><a href="https://wa.me/66840264989" target="_blank" rel="noopener"><span class="ch__k">WhatsApp</span><span class="ch__v">+66 84 026 4989</span></a></li>
+      </ul>
+      <p class="fine reveal" data-i="res.deposit">A booking deposit is required for large tables, and for the Long Beef Wellington.</p>
+      <div class="wslot wslot--reserve" data-ws="end" aria-hidden="true"></div>
+    </div>
+    <form class="form glass reveal" id="resForm" novalidate>
+      <p class="demo-tag" role="note"><span class="dot" aria-hidden="true"></span><span data-i="demo">Demo only, not connected</span></p>
+      <div class="form__row">
+        <label><span data-i="form.name">Name</span><input name="name" autocomplete="name" required></label>
+        <label><span data-i="form.phone">Phone or LINE</span><input name="phone" autocomplete="tel" inputmode="tel"></label>
+      </div>
+      <div class="form__row form__row--3">
+        <label><span data-i="form.date">Date</span><input name="date" type="date"></label>
+        <label><span data-i="form.time">Time</span><select name="time"><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option selected>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></label>
+        <label><span data-i="form.guests">Guests</span><select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></label>
+      </div>
+      <fieldset class="choice"><legend data-i="form.seat">Seating</legend>
+        <label><input type="radio" name="seat" value="garden" checked><span data-i="rooms.g">Garden Courtyard</span></label>
+        <label><input type="radio" name="seat" value="inside"><span data-i="rooms.i">Inside</span></label>
+      </fieldset>
+      <label class="check"><input type="checkbox" name="well"><span data-i="form.well">Pre-order the Long Beef Wellington (3+ guests, deposit required)</span></label>
+      <label><span data-i="form.notes">Occasion or notes</span><textarea name="notes" rows="3"></textarea></label>
+      <button class="btn btn--solid btn--block" type="submit" data-i="form.send">Request a table</button>
+      <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- 10 · VISIT -->
+<section class="visit" id="visit" aria-labelledby="visitT" data-ws="out">
+  <div class="visit__img" data-par><img src="img/night-1200.webp" srcset="img/night-480.webp 480w, img/night-800.webp 800w, img/night-1200.webp 1200w, img/night-1600.webp 1600w, img/night-2400.webp 2400w, img/night-2880.webp 2880w" sizes="100vw" width="2880" height="1252" alt="The lit entrance of Café des Amis at night" data-ialt="night" loading="lazy" decoding="async"></div>
+  <div class="wrap visit__grid">
+    <div>
+      <p class="label reveal"><span class="num">IX</span><span data-i="visit.label">Find us</span></p>
+      <h2 id="visitT" class="display reveal" data-i="visit.title">At the end of Soi 11, off Thap Phraya Road.</h2>
+      <p class="reveal" data-i="visit.p1">We are less than 1 km from Walking Street in the direction of Jomtien, 200 yards before Sugar Hut and the junction to Pratumnak.</p>
+      <p class="fine reveal" data-i="visit.gps">If using GPS, please check the address shows Soi 11. Take the long straight roads — if the route seems windy or complicated, select the direct route.</p>
+      <a class="btn btn--line reveal" href="https://www.google.com/maps/search/?api=1&amp;query=12.91320,100.87340" target="_blank" rel="noopener" data-i="visit.map">Open in Google Maps</a>
+    </div>
+    <dl class="addr reveal">
+      <div><dt data-i="visit.a">Address</dt><dd>391/6, Moo 10, End of Soi 11,<br>Thap Praya, Pattaya, Thailand 20260</dd></div>
+      <div><dt data-i="visit.co">Company</dt><dd lang="th">บริษัท คาเฟ่ เดส อมิส จำกัด<br>391/6 ม.12 ต. หนองปรือ อ. บางละมุง จ. ชลบุรี 20150</dd></div>
+      <div><dt>GPS</dt><dd>N 12° 54.792′ &nbsp; E 100° 52.404′</dd></div>
+      <div><dt data-i="visit.h">Hours</dt><dd data-i="visit.hv">Open 7 days a week, 17:00 – 23:00</dd></div>
+      <div><dt data-i="visit.f">Follow</dt><dd class="social"><a href="https://www.facebook.com/CafeDesAmisPattaya/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/cafedesamispattaya/" target="_blank" rel="noopener">Instagram</a><a href="https://youtu.be/9IFm5BFrPeI?si=UOHMs5SDyVe1bUc5" target="_blank" rel="noopener">YouTube</a></dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <span class="mark mark--foot" aria-hidden="true"></span>
+    <p class="foot__copy">© 2026 Café des Amis · <span data-i="foot.tag">Fine dining restaurant, Pattaya</span></p>
+    <p class="foot__concept" data-i="foot.concept">Concept preview — not the official website. Booking and forms are demo only, not connected.</p>
+    <a class="maker" href="#top" aria-label="Designed by RocketNest Design"><img src="brand/rocketnest-sm.png" alt="" width="240" height="226" loading="lazy"><span><span data-i="foot.by">Design by</span> RocketNest Design</span></a>
+  </div>
+</footer>
+
+<nav class="dock glass" aria-label="Quick actions">
+  <a href="tel:+66840264989"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4.2-2 1.4a12 12 0 0 0 5.8 5.8l1.4-2 4.2 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg><span data-i="dock.call">Call</span></a>
+  <a href="https://line.me/R/ti/p/@cafedesamis" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.2 3 11.2c0 3.5 3.1 6.4 7.3 7l-.4 2.3 3.2-2.2c4.6-.4 7.9-3.4 7.9-7.1C21 7.2 17 4 12 4z"/></svg><span>LINE</span></a>
+  <a href="#reserve" class="dock__main"><span data-i="cta.reserve">Reserve</span></a>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>window.CDA_IMG={"dish0":{"w":1400,"h":1867,"s":[480,800,1200,1400]},"dish1":{"w":1400,"h":1867,"s":[480,800,1200,1400]},"dish2":{"w":900,"h":1200,"s":[480,800,900]},"dish3":{"w":1400,"h":1867,"s":[480,800,1200,1400]},"dish4":{"w":1394,"h":1860,"s":[480,800,1200,1394]},"dish5":{"w":900,"h":1201,"s":[480,800,900]},"dish6":{"w":900,"h":1200,"s":[480,800,900]},"dish7":{"w":1400,"h":1867,"s":[480,800,1200,1400]},"gin1":{"w":900,"h":1200,"s":[480,800,900]},"gin2":{"w":900,"h":1200,"s":[480,800,900]},"gin3":{"w":900,"h":1200,"s":[480,800,900]},"hero":{"w":1200,"h":1600,"s":[480,800,1200]},"well":{"w":2880,"h":1440,"s":[480,800,1200,1600,2400,2880]},"g1":{"w":1920,"h":1440,"s":[480,800,1200,1600,1920]},"g2":{"w":1920,"h":1440,"s":[480,800,1200,1600,1920]},"garden":{"w":2880,"h":2022,"s":[480,800,1200,1600,2400,2880]},"night":{"w":2880,"h":1252,"s":[480,800,1200,1600,2400,2880]}};</script>
+<script src="app.js" defer></script>
+<script type="module" src="assets/v6.js"></script>
+</body>
+</html>
